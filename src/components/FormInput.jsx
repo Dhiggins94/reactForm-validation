@@ -4,7 +4,7 @@ import "./formInput.css"
 
 export default function FormInput(props) {
   // with this onblur, handlefocus and usestate(focus), we're going set it so the error validation only pops up when we leave the input filed in an invalid state
-const [focused,setFocused] = useState(false)
+  const [focused, setFocused] = useState(false)
   // we're going to destructure our props by taking the inputs from our mapped inputs in (app.js) and use them here. 
   const { label, errorMessage, onChange, id, ...inputProps } = props;
   const handleFocus = (e) => {
@@ -13,12 +13,12 @@ const [focused,setFocused] = useState(false)
   return (
     <div className='formInput'>
       <label>{label}</label>
-      
-      <input {...inputProps} onChange={onChange}  onBlur={handleFocus} onFocus={()=>inputProps.name=="confrimPassword" && setFocused(true)} focused={focused.toString()}
-      
+
+      <input {...inputProps} onChange={onChange} onBlur={handleFocus} onFocus={() => inputProps.name === "confrimPassword" && setFocused(true)} focused={focused.toString()}
+
       />
       {/* for form error validation */}
-      <span>{ errorMessage}</span>
+      <span>{errorMessage}</span>
     </div>
   )
 }
